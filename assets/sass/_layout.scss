@@ -119,6 +119,17 @@ footer {
     border: 1px solid $grey-color-light;
 }
 
+.authors {
+  padding: 15px;
+  border: 1px solid $grey-color-light;
+}
+
+.author-photo img {
+  border-radius: 50%;
+  width:  90px;
+  height: 90px;
+}
+
 .post-img img {
     width: 100%;
 }
@@ -141,7 +152,6 @@ footer {
 
 .post-title {
     line-height: 2;
-    text-decoration: underline;
 }
 
 .index-anchor {

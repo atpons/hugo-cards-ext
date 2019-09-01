@@ -5,8 +5,8 @@
 
           <header class="post-header">
             <h1 class="post-title" itemprop="name headline">{{ .Title }}</h1>
-            <p class="post-meta"><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' itemprop="datePublished">{{ .Date.Format "January 2, 2006" }}</time>{{ with .Params.Author }} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ . }}</span></span>{{ end }}</p>
-                 
+            <p class="post-meta"><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}' itemprop="datePublished">{{ .Date.Format "2006/01/02" }}</time>{{ with .Params.Author }} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ . }}</span></span>{{ end }}</p>
+            <p>{{ .Params.Author }}</p>
           </header>
 
           <div class="post-content" itemprop="articleBody">
@@ -14,6 +14,25 @@
           </div>
 
     </article>
+
+    {{ if .Params.authors }}
+    <div class="row authors">
+        {{- range .Params.authors }}
+        {{- with $.Site.GetPage "taxonomyTerm" (printf "authors/%s" (urlize .)) }}
+        <div class="col-sm-2">
+            <div class="author-photo">
+                <img src="{{ .Params.photo }}">
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <h4>{{ .Params.name }}</h4>
+            {{ .Content }}
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+    {{ end }}
+
     <div class="row">
         {{ if .Site.Params.disqus }}
          {{ partial "disqus.html" . }}
@@ -30,6 +49,7 @@
               {{ end }}
             </ul>
     </div>
+    
 </div>
 
 
