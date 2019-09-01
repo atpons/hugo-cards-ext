@@ -26,3 +26,5 @@ paginate = 6
      name = "bool"
      link = "https://bool.netlify.com"
 
+[taxonomies]
+  author = "authors"
